@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<!--
+	Caminar by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+
+	Updated by Jason Lise (jason.lise7 @gmail)
+-->
+<html>
+
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149449020-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-149449020-1');
+	</script>
+	<title>유리소녀</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+
+</head>
+
+<body>
+
+	<!-- Header -->
+	<header id="header">
+		<div class="logo"><a href="#">유리소녀 <span>희극 실행</span></a></div>
+	</header>
+
+	<!-- Main -->
+	<section id="main">
+		<div class="inner">
+
+			<section id="one" class="wrapper style1">
+
+				<div class="image fit flush">
+					<img src="nimages/10.jpg" alt="" />
+				</div>
+				<header class="special">
+					<h2></h2>
+				</header>
+				<div class="content">
+					<p>This page was written by a fan who had a love for the comic "유리소녀". The author of the comic is "희극실행".</p>
+				</div>
+			</section>
+
+			<section id="three" class="wrapper">
+			</section>
+			<script>
+				$(document).ready(function () {
+					$.getJSON("data/list.json", function (data) {
+						for (var i = 0, len = data.length; i < len; i++) {
+							pic_url = "nimages/" + i.toString().padStart(2, "0") + ".jpg";
+							var alt = ""
+							if (i % 2 == 1) {
+								alt = " alt"
+							}
+							div_content =
+								`<div class="spotlight ` + alt + `">
+								<div class="image flush"><img src="` + pic_url + `" alt="" /></div>
+								<div class="inner">
+								<h3>` + data[i]["subtitle"] + `</h3>`
+							links = "";
+							console.log(data[i]["links"])
+							for (var link_idx = 0, link_len = data[i]["links"].length; link_idx < link_len; link_idx++) {
+								links += `<a href="` + data[i]["links"][link_idx][0] + `">` + data[i]["links"][link_idx][1] + "</a> "
+							}
+							div_content = div_content + links + `
+								</div>
+								</div>`
+
+							console.log(div_content)
+							$('#three').append(div_content)
+						}
+					}
+					);
+				});
+			</script>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="copyright">
+			<p>jason.lise7 at gmail</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.poptrox.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
